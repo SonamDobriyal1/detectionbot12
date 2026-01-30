@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+<head><title>Live Stream</title></head>
+<body>
+  <img id="video" />
+  <script>
+    const img = document.getElementById("video");
+    const wsUrl = (location.protocol === "https:" ? "wss://" : "ws://") + location.host + "/ws";
+    let currentUrl = null;
+
+    function connect() {
+      const ws = new WebSocket(wsUrl);
+      ws.binaryType = "arraybuffer";
+
+      ws.onmessage = (event) => {
+        const blob = new Blob([event.data], { type: "image/jpeg" });
+        const nextUrl = URL.createObjectURL(blob);
+        img.src = nextUrl;
+        if (currentUrl) {
+          URL.revokeObjectURL(currentUrl);
+        }
+        currentUrl = nextUrl;
+      };
+
+      ws.onclose = () => {
+        setTimeout(connect, 1000);
+      };
+    }
+
+    connect();
+  </script>
+</body>
+</html>

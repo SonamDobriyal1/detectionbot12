@@ -1,0 +1,6 @@
+flask
+gunicorn
+flask-sock
+flask-cors
+gevent
+gevent-websocket

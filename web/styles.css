@@ -1,0 +1,102 @@
+.page {
+  max-width: 1100px;
+  margin: 24px auto;
+  padding: 0 16px 40px;
+  font-family: "Segoe UI", Arial, sans-serif;
+  color: #1f1f1f;
+}
+
+header {
+  margin-bottom: 16px;
+}
+
+h1 {
+  margin: 0 0 6px;
+  font-size: 28px;
+}
+
+h2 {
+  margin: 0 0 12px;
+  font-size: 18px;
+}
+
+.muted {
+  color: #666;
+}
+
+.panel {
+  background: #f8f8fb;
+  border: 1px solid #e2e2ea;
+  border-radius: 10px;
+  padding: 16px;
+  margin-bottom: 16px;
+}
+
+.row {
+  display: grid;
+  grid-template-columns: 140px 1fr auto auto;
+  gap: 10px;
+  align-items: center;
+  margin-bottom: 10px;
+}
+
+.row label {
+  font-weight: 600;
+}
+
+input,
+select,
+button {
+  padding: 8px 10px;
+  font-size: 14px;
+}
+
+button {
+  background: #1e66ff;
+  color: #fff;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+}
+
+button.secondary {
+  background: #5a5a5a;
+}
+
+button:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: 1.2fr 1fr;
+  gap: 16px;
+}
+
+.video {
+  width: 100%;
+  min-height: 360px;
+  background: #0b0b0b;
+  border-radius: 8px;
+  object-fit: contain;
+}
+
+.telemetry {
+  background: #111827;
+  color: #e5e7eb;
+  padding: 12px;
+  border-radius: 8px;
+  min-height: 120px;
+  white-space: pre-wrap;
+}
+
+@media (max-width: 900px) {
+  .row {
+    grid-template-columns: 1fr;
+  }
+  .grid {
+    grid-template-columns: 1fr;
+  }
+}
+
