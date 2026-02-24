@@ -18,8 +18,8 @@ try:
 except Exception:
     GPIO = None
 
-SERVER_BASE = "wss://agraid-rover.onrender.com"
-SERVER_HTTP = "https://agraid-rover.onrender.com"
+SERVER_BASE = "wss://detectionbot12-colo.onrender.com"
+SERVER_HTTP = "https://detectionbot12-colo.onrender.com"
 ROBOT_UUID = "Agraid"
 ROBOT_TYPE = "rpi-rover"
 WARMUP_URL = SERVER_HTTP
