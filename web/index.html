@@ -10,8 +10,8 @@
     <section class="topbar">
       <div class="topbar-inner">
         <div class="topbar-brand">
-          <p class="eyebrow">Mission Control</p>
-          <h1>Detection bot</h1>
+          <p class="eyebrow">Field Station</p>
+          <h1>Detection Bot</h1>
         </div>
         <div class="topbar-controls">
           <div class="top-item top-item-wide">
@@ -31,8 +31,8 @@
 
     <div class="page">
       <header class="hero compact-hero">
-        <h2>Live Operations Dashboard</h2>
-        <p class="muted">Dual camera monitoring, drive control, and telemetry monitoring.</p>
+        <h2>Field Operations Dashboard</h2>
+        <p class="muted">Live vision, leaf health inference, and rover drive control.</p>
       </header>
 
       <section class="grid compact-grid">
@@ -43,14 +43,33 @@
             <input id="useMjpeg" type="checkbox" />
             Use MJPEG (HTTP)
           </label>
+          <div class="capture-panel">
+            <div class="row compact capture-row">
+              <button id="captureFrame">Capture frame</button>
+              <span id="predictionStatus" class="muted">No prediction yet.</span>
+            </div>
+            <div class="prediction-grid">
+              <div class="prediction-card">
+                <p class="metric-label">Prediction</p>
+                <p id="predictionLabel" class="metric-value">--</p>
+                <p class="metric-unit">label</p>
+              </div>
+              <div class="prediction-card">
+                <p class="metric-label">Confidence</p>
+                <p id="predictionConfidence" class="metric-value">--</p>
+                <p class="metric-unit">%</p>
+              </div>
+            </div>
+            <div class="prediction-card">
+              <p class="metric-label">All Confidences</p>
+              <div id="predictionList" class="prediction-list">--</div>
+            </div>
+          </div>
         </div>
         <div class="panel">
-          <h2>Thermal Camera</h2>
-          <img id="thermalVideo" class="video" alt="Thermal feed" />
-          <label class="stream-option">
-            <input id="useMjpegThermal" type="checkbox" />
-            Use MJPEG (HTTP)
-          </label>
+          <h2>Captured Image</h2>
+          <img id="capturePreview" class="video capture-preview" alt="Captured frame preview" />
+          <p class="muted">Latest captured frame sent to the model.</p>
         </div>
       </section>
 
@@ -75,52 +94,13 @@
         </div>
       </section>
 
-      <section class="grid compact-grid">
-        <div class="panel">
-          <h2>Telemetry Feed</h2>
-          <div class="metrics-grid">
-            <div class="metric-card">
-              <p class="metric-label">Temperature</p>
-              <p id="metricTemp" class="metric-value">--</p>
-              <p class="metric-unit">°C</p>
-            </div>
-            <div class="metric-card">
-              <p class="metric-label">Humidity</p>
-              <p id="metricHumidity" class="metric-value">--</p>
-              <p class="metric-unit">%RH</p>
-            </div>
-            <div class="metric-card">
-              <p class="metric-label">Methane</p>
-              <p id="metricMethane" class="metric-value">--</p>
-              <p class="metric-unit">ppm</p>
-            </div>
-            <div class="metric-card">
-              <p class="metric-label">Ammonia</p>
-              <p id="metricAmmonia" class="metric-value">--</p>
-              <p class="metric-unit">ppm</p>
-            </div>
-            <div class="metric-card">
-              <p class="metric-label">Alcohol</p>
-              <p id="metricAlcohol" class="metric-value">--</p>
-              <p class="metric-unit">ppm</p>
-            </div>
-          </div>
-
-          <div class="row compact record-row">
-            <button id="toggleRecording">Start record data</button>
-            <button id="downloadCsv" class="secondary" disabled>Download CSV</button>
-            <span id="recordingStatus" class="muted">Not recording</span>
-            <span id="lastTelemetryTs" class="muted">Last update: --</span>
-          </div>
+      <section class="panel">
+        <h2>Manual Commands</h2>
+        <div class="row compact">
+          <input id="commandInput" placeholder="e.g. MOVE_FORWARD" />
+          <button id="sendCommand">Send</button>
         </div>
-        <div class="panel">
-          <h2>Manual Commands</h2>
-          <div class="row compact">
-            <input id="commandInput" placeholder="e.g. MOVE_FORWARD" />
-            <button id="sendCommand">Send</button>
-          </div>
-          <pre id="commandLog" class="telemetry">No commands yet.</pre>
-        </div>
+        <pre id="commandLog" class="telemetry">No commands yet.</pre>
       </section>
     </div>
     <script src="./app.js"></script>
